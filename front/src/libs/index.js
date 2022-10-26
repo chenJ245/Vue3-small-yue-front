@@ -8,7 +8,7 @@ export default {
     for (const [fullPath, fn] of Object.entries(components)) {
       const componentName = 'm-' + fullPath.replace('./', '').split('/')[0]
       // 3. 利用 app.component 进行注册
-      console.log(componentName)
+      // console.log(componentName)
       app.component(componentName, defineAsyncComponent(fn))
     }
   }
