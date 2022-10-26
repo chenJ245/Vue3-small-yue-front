@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主体替换原理</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /* 浅色主题 */
+      .light .content {
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+        color: #000;
+        transition: all 0.3s;
+      }
+      /* 深色主题 */
+      .dark .content {
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        transition: all 0.3s;
+      }
+      button {
+        position: fixed;
+        top: 100px;
+        right: 100px;
+      }
+    </style>
+  </head>
+  <body class="light">
+    <div class="content">我是一个 div</div>
+    <button onclick="change()">点我切换主题模式</button>
+
+    <script>
+      // 主题替换原理：通过类名来控制对应的样式 (主题)，当类名发生变化时，即完成了主题替换
+      function change() {
+        document.body.className =
+          document.body.className === 'light' ? 'dark' : 'light'
+      }
+    </script>
+  </body>
+</html>
