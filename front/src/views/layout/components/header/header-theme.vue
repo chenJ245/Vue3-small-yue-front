@@ -31,7 +31,7 @@
 
 <script setup>
 import { THEME_LIGHT, THEME_DARK, THEME_SYSTEM } from '@/constants'
-import { computed } from '@vue/runtime-core'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
@@ -76,6 +76,6 @@ const svgIconName = computed(() => {
   const findTheme = themeArr.find((item) => {
     return item.type == store.getters.themeType
   })
-  return findTheme.icon
+  return findTheme?.icon
 })
 </script>
