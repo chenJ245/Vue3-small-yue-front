@@ -1,8 +1,6 @@
 <template>
   <!-- pc 端：头部图标 -->
-  <div class="hidden pt-5 h-8 xl:block">
-    <img class="m-auto" src="/2.jpg" alt="" />
-  </div>
+  <div class="hidden pt-5 h-8 xl:block"></div>
   <!-- 移动端: 头部图标 -->
   <div class="h-[111px] xl:hidden">
     <img
