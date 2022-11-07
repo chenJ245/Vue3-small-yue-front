@@ -3,13 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^8.1.2",
+    "ali-oss": "^6.17.0",
     "axios": "^0.26.1",
+    "cropperjs": "^1.5.12",
+    "dayjs": "^1.11.6",
+    "driver.js": "^0.9.8",
+    "file-saver": "^2.0.5",
+    "gsap": "^3.9.1",
+    "md5": "^2.3.0",
+    "vee-validate": "^4.7.1",
     "vue": "^3.2.37",
     "vue-router": "^4.0.14",
     "vuex": "^4.0.2",
@@ -20,6 +28,7 @@
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
     "sass": "^1.45.0",
+    "tailwind-scrollbar": "^2.1.0-preview.0",
     "tailwindcss": "^3.0.23",
     "vite": "^3.1.0",
     "vite-plugin-svg-icons": "^2.0.1"

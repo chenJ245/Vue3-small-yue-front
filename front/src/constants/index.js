@@ -1,11 +1,10 @@
-// pc 设备指定宽度
-export const PC_DEVICE_WIDTH = 1280
+// PC 设备指定宽度
+export const PC_DEVICE_WIDTH = 1519
 // category 的本地构建数据
 export const ALL_CATEGORY_ITEM = {
   id: 'all',
   name: '全部'
 }
-
 // category 的初始化数据
 export const CATEGORY_NOMAR_DATA = [
   ALL_CATEGORY_ITEM,
@@ -21,16 +20,60 @@ export const CATEGORY_NOMAR_DATA = [
     col: 2,
     urlname: 'industrial_design'
   },
-  { id: 'architecture', name: '建筑设计', urlname: 'architecture' },
-  { id: 'art', name: '人文艺术', urlname: 'art' },
-  { id: 'home', name: '家居/家装', col: 1, urlname: 'home' },
-  { id: 'apparel', name: '女装/搭配', col: 1, urlname: 'apparel' },
-  { id: 'men', name: '男士/风尚', col: 2, urlname: 'men' },
-  { id: 'modeling_hair', name: '造型/美妆', urlname: 'modeling_hair' },
-  { id: 'diy_crafts', name: '手工/布艺', urlname: 'diy_crafts' },
-  { id: 'food_drink', name: '美食', urlname: 'food_drink' },
-  { id: 'travel,_places', name: '旅行', urlname: 'travel_places' },
-  { id: 'wedding_events', name: '婚礼', col: 2, urlname: 'wedding_events' }
+  {
+    id: 'architecture',
+    name: '建筑设计',
+    urlname: 'architecture'
+  },
+  {
+    id: 'art',
+    name: '人文艺术',
+    urlname: 'art'
+  },
+  {
+    id: 'home',
+    name: '家居/家装',
+    col: 1,
+    urlname: 'home'
+  },
+  {
+    id: 'apparel',
+    name: '女装/搭配',
+    col: 1,
+    urlname: 'apparel'
+  },
+  {
+    id: 'men',
+    name: '男士/风尚',
+    col: 2,
+    urlname: 'men'
+  },
+  {
+    id: 'modeling_hair',
+    name: '造型/美妆',
+    urlname: 'modeling_hair'
+  },
+  {
+    id: 'diy_crafts',
+    name: '手工/布艺',
+    urlname: 'diy_crafts'
+  },
+  {
+    id: 'food_drink',
+    name: '美食',
+    urlname: 'food_drink'
+  },
+  {
+    id: 'travel_places',
+    name: '旅行',
+    urlname: 'travel_places'
+  },
+  {
+    id: 'wedding_events',
+    name: '婚礼',
+    col: 2,
+    urlname: 'wedding_everts'
+  }
 ]
 
 // 极简白
@@ -39,3 +82,21 @@ export const THEME_LIGHT = 'THEME_LIGHT'
 export const THEME_DARK = 'THEME_DARK'
 // 跟随系统
 export const THEME_SYSTEM = 'THEME_SYSTEM'
+
+// 登陆方式
+export const LOGIN_TYPE_USERNAME = 'username'
+export const LOGIN_TYPE_OAUTH_NO_REGISTER_CODE = 204
+export const LOGIN_TYPE_QQ = 'QQ'
+export const LOGIN_TYPE_WX = 'WX'
+
+// STS 上传数据
+export const REGION = 'oss-cn-beijing'
+export const BUCKET = 'front'
+
+// 兔小巢反馈地址
+export const FEEDBACK_URL = 'https://support.qq.com/product/383681'
+
+// 微博APP Key
+export const WEI_BO_APP_KEY = '3454329089'
+// 微博用户的 UID
+export const WEI_BO_UID = '5984245953'

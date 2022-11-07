@@ -7,7 +7,7 @@ import store from '../store'
  */
 let matchMedia
 const watchSystemThemeChange = () => {
-  // 仅需一次初始化
+  //仅需一次初始化 
   if (matchMedia) return
   matchMedia = window.matchMedia('(prefers-color-scheme: dark)')
   // 监听主题变化
@@ -17,14 +17,14 @@ const watchSystemThemeChange = () => {
 }
 
 /**
- * 变更主题的方法
- * @param {*} theme  主题的标记
+ * 变更主题
+ * @param {*} theme 主题的标记
  */
 const changeTheme = (theme) => {
   // html 的 class
   let themeClassName = ''
 
-  switch (theme) {
+  switch(theme) {
     case THEME_LIGHT:
       themeClassName = 'light'
       break
@@ -38,18 +38,19 @@ const changeTheme = (theme) => {
       break
   }
 
-  // 修改 html 的class
+  // 修改 html 的 class
   document.querySelector('html').className = themeClassName
 }
 
 /**
  * 初始化主题
  */
-
 export default () => {
-  // 1. 当主题发生改变时，或者进入系统时，可以进行 html class 的配置
-  watch(() => store.getters.themeType, changeTheme, {
-    // 初始执行一次
-    immediate: true
-  })
+  // 1. 当主题发生改变时，或者当进入系统时，可以进行 html class 的配置
+  watch(
+    () => store.getters.themeType, changeTheme, {
+      // 初始执行一次
+      immediate: true
+    }
+  )
 }

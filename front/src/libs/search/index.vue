@@ -15,25 +15,25 @@
         class="block w-full h-[44px] pl-4 outline-0 bg-zinc-100 dark:bg-zinc-800 caret-zinc-400 rounded-xl text-zinc-900 dark:text-zinc-200 tracking-wide text-sm font-semibold border border-zinc-100 dark:border-zinc-700 duration-500 focus:border-red-300 group-hover:bg-white dark:group-hover:bg-zinc-900 group-hover:border-zinc-200 dark:group-hover:border-zinc-700"
         type="text"
         placeholder="搜索"
-        v-model="inputValue"
+        v-model="intputValue"
         @keyup.enter="onSearchHandler"
         @focus="onFocusHandler"
         @blur="onBlurHandler"
       />
       <!-- 删除按钮 -->
       <m-svg-icon
-        v-show="inputValue"
+        v-show="intputValue"
         name="input-delete"
-        class="w-1.5 h-1.5 absolute translate-y-[-50%] top-[50%] right-9 cursor-pointer duration-500"
+        class="h-1.5 w-1.5 absolute translate-y-[-50%] top-[50%] right-9 cursor-pointer duration-500"
         @click="onClearClick"
       ></m-svg-icon>
       <!-- 分割线 -->
       <div
         class="opacity-0 h-1.5 w-[1px] absolute translate-y-[-50%] top-[50%] right-[62px] duration-500 bg-zinc-200 group-hover:opacity-100"
       ></div>
-      <!-- TODO: 搜索按钮 (通用组件) -->
-      <m-button
-        class="opacity-0 duration-500 absolute translate-y-[-50%] top-[50%] right-1 rounded-full group-hover:opacity-100"
+      <!-- TODO: 搜索按钮(通用组件)-->
+      <m-button 
+        class="opacity-0 absolute translate-y-[-50%] top-[50%] right-1 rounded-full duration-500 group-hover:opacity-100"
         icon="search"
         iconColor="#ffffff"
         @click="onSearchHandler"
@@ -44,9 +44,9 @@
       <div
         v-if="$slots.dropdown"
         v-show="isFocus"
-        class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 dark:border-zinc-600 duration-200 hover:shadow-2xl"
+        class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 dark:border-zinc-600 duration-200 hover:shadow-2xl scrollbar-thin scrollbar-thumb-transparent xl:scrollbar-thumb-zinc-200 xl:dark:scrollbar-thumb-zinc-900 scrollbar-track-transparent"
       >
-        <slot name="dropdown"></slot>
+        <slot name="dropdown" />
       </div>
     </transition>
   </div>
@@ -54,8 +54,8 @@
 
 <script>
 // 双向绑定
-const EMIT_UPDATE_MODELVALUE = 'updata:modelValue'
-// search 搜索
+const EMIT_UPDATE_MODELVALUE = 'update:modelValue'
+// 搜索
 const EMIT_SEARCH = 'search'
 // 删除所有文本
 const EMIT_CLEAR = 'clear'
@@ -72,17 +72,18 @@ export default {
 </script>
 
 <script setup>
-import { useVModel } from '@vueuse/core'
-import { ref, watch } from 'vue'
-import { onClickOutside } from '@vueuse/core'
+  import { useVModel } from '@vueuse/core'
+  import { ref, watch } from 'vue'
+  import { onClickOutside } from '@vueuse/core'
+
 /**
  * 1. 输入内容实现双向数据绑定
- * 2. 搜索按钮在 hover 是展示
+ * 2. 搜索按钮在 hover 时展示
  * 3. 一键清空文本功能
  * 4. 触发搜索
  * 5. 控制下拉展示区的展示
  * 6. 事件处理
- */
+ */ 
 const props = defineProps({
   modelValue: {
     required: true,
@@ -91,19 +92,20 @@ const props = defineProps({
 })
 
 const emits = defineEmits([
-  EMIT_UPDATE_MODELVALUE,
-  EMIT_SEARCH,
-  EMIT_CLEAR,
-  EMIT_INPUT,
-  EMIT_FOCUS,
+  EMIT_UPDATE_MODELVALUE, 
+  EMIT_SEARCH, 
+  EMIT_CLEAR, 
+  EMIT_INPUT, 
+  EMIT_FOCUS, 
   EMIT_BLUR
 ])
 
-const inputValue = useVModel(props)
+const intputValue = useVModel(props)
+
 /**
  * 监听用户输入行为
  */
-watch(inputValue, (val) => {
+watch(intputValue, (val) => {
   emits(EMIT_INPUT, val)
 })
 
@@ -111,7 +113,7 @@ watch(inputValue, (val) => {
  * 删除文本
  */
 const onClearClick = () => {
-  inputValue.value = ''
+  intputValue.value = ''
   emits(EMIT_CLEAR, '')
 }
 
@@ -119,7 +121,7 @@ const onClearClick = () => {
  * 搜索
  */
 const onSearchHandler = () => {
-  emits(EMIT_SEARCH, inputValue.value)
+  emits(EMIT_SEARCH, intputValue.value)
 }
 
 // input 是否获取到焦点
@@ -129,6 +131,7 @@ const containerTarget = ref(null)
 /**
  * 获取到焦点
  */
+
 const onFocusHandler = () => {
   isFocus.value = true
   emits(EMIT_FOCUS)
@@ -147,6 +150,7 @@ const onBlurHandler = () => {
 onClickOutside(containerTarget, () => {
   isFocus.value = false
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -154,6 +158,7 @@ onClickOutside(containerTarget, () => {
 .slide-leave-active {
   transition: all 0.5s;
 }
+
 .slide-enter-from,
 .slide-leave-to {
   opacity: 0;

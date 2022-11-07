@@ -1,5 +1,5 @@
 /**
- * 生成随机颜色值
+ * 生成随机色值
  */
 export const randomRGB = () => {
   const r = Math.floor(Math.random() * 255)

@@ -1,6 +1,7 @@
 /**
  * 从 itemElement 中抽离出所有的 imgElements
  */
+
 export const getImgElements = (itemElements) => {
   const imgElements = []
   itemElements.forEach((el) => {
@@ -22,15 +23,15 @@ export const getAllImg = (imgElements) => {
  * 监听图片数组加载完成 (promise)
  */
 export const onComplateImgs = (imgs) => {
-  // promise 集合
+  // Promise 集合
   const promiseAll = []
-  // 循环 imgs, 构建 promiseAll
+  // 循环 imgs，构建 promiseAll
   imgs.forEach((img, index) => {
     promiseAll[index] = new Promise((resolve, reject) => {
       // 处理 img 的加载情况
-      const imgeObj = new Image()
-      imgeObj.src = img
-      imgeObj.onload = () => {
+      const imageObj =  new Image()
+      imageObj.src = img
+      imageObj.onload = () => {
         resolve({
           img,
           index
@@ -45,20 +46,20 @@ export const onComplateImgs = (imgs) => {
  * 返回列高对象中最小的高度
  */
 export const getMinHeight = (columnHeightObj) => {
-  const columnHeightArr = Object.values(columnHeightObj)
-  return Math.min(...columnHeightArr)
+  const columnHeightAll = Object.values(columnHeightObj)
+  return Math.min(...columnHeightAll)
 }
 
 /**
  * 返回列高对象中最大的高度
  */
 export const getMaxHeight = (columnHeightObj) => {
-  const columnHeightArr = Object.values(columnHeightObj)
-  return Math.max(...columnHeightArr)
+  const columnHeightAll = Object.values(columnHeightObj)
+  return Math.max(...columnHeightAll)
 }
 
 /**
- * 返回列高对象中最小高度所在的列
+ * 返回列高对象中最小高度所在列
  */
 export const getMinHeightColumn = (columnHeightObj) => {
   // 拿到最小的高度

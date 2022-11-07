@@ -7,16 +7,17 @@
       <li
         v-for="(item, index) in $store.getters.categorys"
         :key="item.id"
-        class="text-lg text-zinc-900 dark:text-zinc-300 px-1 py-1.5 duration-100 active:bg-zinc-100 dark:active:bg-zinc-900"
+        class=" text-lg text-zinc-900 px-1 py-1.5 duration-100 active:bg-zinc-100 dark:active:bg-zinc-900 "
         @click="$emit('onItemClick', index)"
-      >
-        {{ item.name }}
+        >
+        {{item.name}}
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-// 推荐,所有的事件都去做一个手动的注册
-defineEmits(['onItemClick'])
+  // 推荐，所有的事件都进行一个手动的注册
+  defineEmits(['onItemClick'])
 </script>
+

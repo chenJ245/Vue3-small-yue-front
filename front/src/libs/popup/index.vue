@@ -1,6 +1,6 @@
 <template>
   <div>
-    <teleport to="body">
+    <teleport to='body'>
       <!-- 蒙版 -->
       <transition name="fade">
         <div
@@ -13,10 +13,10 @@
       <transition name="popup-down-up">
         <div
           v-if="isVisable"
-          v-bind="$attrs"
+          v-bind="$attrs" 
           class="w-screen bg-white dark:bg-zinc-800 z-50 fixed bottom-0"
         >
-          <slot></slot>
+          <slot />
         </div>
       </transition>
     </teleport>
@@ -24,35 +24,36 @@
 </template>
 
 <script setup>
-import { watch } from '@vue/runtime-core'
-import { useScrollLock, useVModel } from '@vueuse/core'
+  import { useScrollLock, useVModel } from '@vueuse/core';
+  import { watch } from 'vue';
 
-const props = defineProps({
-  modelValue: {
-    required: true,
-    type: Boolean
-  }
-})
+  const props =  defineProps({
+    modelValue: {
+      required: true,
+      type: Boolean
+    }
+  })
 
-defineEmits(['update:modelValue'])
+  defineEmits(['update:modelValue'])
 
-// 是一个响应式数据，当 isVisable 的值发生变化时，会自动触发 emit 修改 modelValue
-const isVisable = useVModel(props)
-// 锁定滚动
-const isLocked = useScrollLock(document.body)
-watch(
-  isVisable,
-  (val) => {
-    isLocked.value = val
-  },
+  // 是一个响应式数据，当 isVisable 值发生变化时，会自动触发 emit 修改 modelValue
+  const isVisable = useVModel(props)
+
+  //锁定滚动
+  const isLocked =  useScrollLock(document.body)
+  watch(
+    isVisable,
+    (val) => {
+      isLocked.value = val
+  }, 
   {
     immediate: true
   }
-)
+  )
 </script>
 
 <style lang="scss" scoped>
-// fade 动画
+// 动画
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.3s;
